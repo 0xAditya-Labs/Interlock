@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
+import { Eye, EyeOff, KeyRound, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import AuthImagePattern from "../components/AuthImagePattern";
@@ -128,6 +128,14 @@ const SignUpPage = () => {
               ) : (
                 "Create Account"
               )}
+            </button>
+            <button 
+              type="button" 
+              className="btn btn-sm btn-secondary w-full gap-2" 
+              onClick={() => setFormData({ fullName: "guest_01", email: "interlock_guest_01@gamil.com", password: "12345678" })}
+            >
+              <KeyRound className="size-4" />
+              Fill Guest Credentials
             </button>
           </form>
 

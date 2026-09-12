@@ -1,6 +1,6 @@
-# My-Chat-App (Chatty) - Fullstack Real-Time Chat App
+# Interlock - Fullstack Real-Time Chat App
 
-My-Chat-App (also referred to as Chatty) is a full-featured real-time chat application built using the MERN stack (MongoDB, Express, React, Node.js) with TailwindCSS and DaisyUI for clean, responsive UI components. It supports real-time messaging, authentication, and a beautiful, intuitive interface.
+Interlock is a full-featured real-time chat application built using the MERN stack (MongoDB, Express, React, Node.js) with TailwindCSS and DaisyUI for clean, responsive UI components. It supports real-time messaging, authentication, and a beautiful, intuitive interface.
 
 ---
 
