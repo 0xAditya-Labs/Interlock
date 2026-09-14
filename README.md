@@ -6,7 +6,7 @@ Interlock is a full-featured real-time chat application built using the MERN sta
 
 ## 🚀 Live Demo
 
-🔗 [https://my-chat-app-r5t0.onrender.com](https://my-chat-app-r5t0.onrender.com)
+🔗 [https://interlock-mv9m.onrender.com/](https://interlock-mv9m.onrender.com/)
 
 ---
 
@@ -142,7 +142,7 @@ All from a **single terminal**.
 
 ## 🌐 Deployment
 
-> Deployed on **Render**: [https://my-chat-app-r5t0.onrender.com](https://my-chat-app-r5t0.onrender.com)
+> Deployed on **Render**: [interlock-mv9m.onrender.com](interlock-mv9m.onrender.com)
 
 ---
 

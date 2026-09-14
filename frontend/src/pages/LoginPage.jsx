@@ -21,12 +21,12 @@ const LoginPage = () => {
     <div className="min-h-screen grid lg:grid-cols-2">
       {/* Left Side - Form */}
       <div className="flex flex-col justify-center items-center p-6 sm:p-12 relative overflow-hidden bg-base-100">
-        
+
         {/* Snow/Glass Effect Background Elements */}
         <div className="absolute top-1/4 -left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl pointer-events-none opacity-80 mix-blend-screen" />
         <div className="absolute -bottom-20 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none opacity-90 mix-blend-screen" />
         <div className="absolute top-10 right-10 w-32 h-32 bg-base-content/10 rounded-full blur-2xl pointer-events-none opacity-60" />
-        
+
         {/* Small floating snow particles */}
         <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-white/80 rounded-full blur-[1px] shadow-[0_0_15px_rgba(255,255,255,0.8)]" />
         <div className="absolute bottom-1/4 right-1/3 w-3 h-3 bg-white/60 rounded-full blur-[1px] shadow-[0_0_20px_rgba(255,255,255,0.6)]" />
@@ -100,9 +100,9 @@ const LoginPage = () => {
                   "Sign in"
                 )}
               </button>
-              <button 
-                type="button" 
-                className="btn btn-sm btn-secondary w-full gap-2" 
+              <button
+                type="button"
+                className="btn btn-sm btn-secondary w-full gap-2"
                 onClick={() => setFormData({ email: "interlock_guest_01@gamil.com", password: "12345678" })}
               >
                 <KeyRound className="size-4" />
