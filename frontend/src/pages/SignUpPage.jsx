@@ -13,7 +13,7 @@ const SignUpPage = () => {
     email: "",
     password: "",
   });
-  fot
+
   const { signup, isSigningUp } = useAuthStore();
 
   const validateForm = () => {
@@ -124,7 +124,7 @@ const SignUpPage = () => {
             </div>
 
             <div className="space-y-3 pt-2">
-              <button type="submit" className="btn btn-primary w-full rounded-xl shadow-sm hover:shadow-md transition-all" disabled={isSigningUp}>
+              <button type="submit" className="btn btn-primary w-full" disabled={isSigningUp}>
                 {isSigningUp ? (
                   <>
                     <Loader2 className="size-5 animate-spin" />
@@ -136,7 +136,7 @@ const SignUpPage = () => {
               </button>
               <button
                 type="button"
-                className="btn btn-outline w-full gap-2 rounded-xl border-base-300 hover:bg-base-200/50 hover:border-base-300 hover:text-base-content transition-all"
+                className="btn btn-sm btn-secondary w-full gap-2"
                 onClick={() => setFormData({ fullName: "guest_01", email: "interlock_guest_01@gamil.com", password: "12345678" })}
               >
                 <KeyRound className="size-4" />
