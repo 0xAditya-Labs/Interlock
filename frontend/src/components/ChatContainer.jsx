@@ -35,57 +35,69 @@ const ChatContainer = () => {
 
   if (isMessagesLoading) {
     return (
-      <div className="flex-1 flex flex-col overflow-auto">
-        <ChatHeader />
+      <div className="flex-1 flex flex-col overflow-hidden min-h-0">
+        <ChatHeader className="flex-shrink-0" />
         <MessageSkeleton />
-        <MessageInput />
+        <MessageInput className="flex-shrink-0" />
       </div>
     );
   }
 
   return (
-    <div className="flex-1 flex flex-col overflow-auto">
-      <ChatHeader />
+    <div className="flex-1 flex flex-col overflow-hidden min-h-0">
+      <div className="flex-shrink-0 z-10">
+        <ChatHeader />
+      </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-6 bg-base-100/30">
         {messages.map((message) => (
           <div
             key={message._id}
-            className={`chat ${message.senderId === authUser._id ? "chat-end" : "chat-start"}`}
+            className={`flex ${message.senderId === authUser._id ? "justify-end" : "justify-start"}`}
             ref={messageEndRef}
           >
-            <div className=" chat-image avatar">
-              <div className="size-10 rounded-full border">
-                <img
-                  src={
-                    message.senderId === authUser._id
-                      ? authUser.profilePic || "/avatar.png"
-                      : selectedUser.profilePic || "/avatar.png"
-                  }
-                  alt="profile pic"
-                />
+            <div className={`flex items-end gap-2 max-w-[85%] sm:max-w-[75%] ${message.senderId === authUser._id ? "flex-row-reverse" : "flex-row"}`}>
+              <div className="flex-shrink-0">
+                <div className="size-8 rounded-full overflow-hidden shadow-sm border border-base-200">
+                  <img
+                    src={
+                      message.senderId === authUser._id
+                        ? authUser.profilePic || "/avatar.png"
+                        : selectedUser.profilePic || "/avatar.png"
+                    }
+                    alt="profile pic"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="chat-header mb-1">
-              <time className="text-xs opacity-50 ml-1">
-                {formatMessageTime(message.createdAt)}
-              </time>
-            </div>
-            <div className="chat-bubble flex flex-col">
-              {message.image && (
-                <img
-                  src={message.image}
-                  alt="Attachment"
-                  className="sm:max-w-[200px] rounded-md mb-2"
-                />
-              )}
-              {message.text && <p>{message.text}</p>}
+              <div className={`flex flex-col gap-1 ${message.senderId === authUser._id ? "items-end" : "items-start"}`}>
+                <div className="text-[10px] text-base-content/50 font-medium px-1">
+                  {formatMessageTime(message.createdAt)}
+                </div>
+                <div className={`
+                  flex flex-col overflow-hidden px-4 py-2.5 rounded-2xl shadow-sm
+                  ${message.senderId === authUser._id 
+                    ? "bg-primary text-primary-content rounded-br-sm" 
+                    : "bg-base-200 text-base-content rounded-bl-sm"}
+                `}>
+                  {message.image && (
+                    <img
+                      src={message.image}
+                      alt="Attachment"
+                      className="sm:max-w-[250px] rounded-xl mb-2 object-cover border border-base-100/10"
+                    />
+                  )}
+                  {message.text && <p className="text-[15px] leading-relaxed">{message.text}</p>}
+                </div>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      <MessageInput />
+      <div className="flex-shrink-0 z-10">
+        <MessageInput />
+      </div>
     </div>
   );
 };
