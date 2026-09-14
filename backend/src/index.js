@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
-}
+} // comment this {} and in dev also, on hitting backend, u will get the frontend link bcz of default handler 
 
 server.listen(PORT, () => {
   console.log("server is running on PORT:" + PORT);
