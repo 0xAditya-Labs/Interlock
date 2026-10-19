@@ -1,0 +1,6 @@
+# Node.js dependencies (already installed via package.json)
+ioredis
+@socket.io/redis-adapter
+
+# System Requirements
+redis-server (Required for distributed message routing and presence)

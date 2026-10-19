@@ -1,4 +1,4 @@
-# Interlock - Fullstack Real-Time Chat App
+# Interlock - Fullstack Distributed Real-Time Chat App
 
 Interlock is a full-featured real-time chat application built using the MERN stack (MongoDB, Express, React, Node.js) with TailwindCSS and DaisyUI for clean, responsive UI components. It supports real-time messaging, authentication, and a beautiful, intuitive interface.
 
@@ -36,8 +36,21 @@ Interlock is a full-featured real-time chat application built using the MERN sta
 * Express.js
 * MongoDB (Mongoose ODM)
 * Socket.io
+* Redis (Required for distributed architecture)
 * JWT Auth
 * dotenv (for env config)
+
+---
+
+## 🛠️ Prerequisites
+
+**Redis is now required** to run this application (used for distributed pub/sub and presence tracking). 
+- **Mac/Linux:** Install natively via Homebrew or APT.
+- **Windows:** Since Redis does not have official native Windows support, please use **WSL (Windows Subsystem for Linux)**. 
+  1. Open your WSL terminal.
+  2. Run `sudo apt-get install redis-server`
+  3. Start the server with `sudo service redis-server start`
+  4. Ensure it's running on `localhost:6379`.
 
 ---
 
