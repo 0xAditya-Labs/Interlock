@@ -1,6 +1,6 @@
 # Interlock — WebSocket Distributed Architecture Benchmark Report
 
-> **Generated:** 25 Oct 2026, 11:36:50 pm IST  
+> **Generated:** 26 Oct 2026, 01:21:33 am IST  
 > **Total Run Duration:** 5.8 minutes  
 > **Branch:** `distributed-backend`  
 > **Author:** Aditya Chauhan
@@ -30,7 +30,7 @@ progressively increasing WebSocket load, and their message-delivery latencies we
 | **RAM** | 15.3 GB |
 | **Node.js** | v24.12.0 |
 | **Redis** | redis-cli 8.10.2 |
-| **Test Date** | 25 Oct 2026, 11:31:00 pm IST |
+| **Test Date** | 26 Oct 2026, 01:15:43 am IST |
 
 ---
 
@@ -134,7 +134,47 @@ All loads below are expressed as multiples of B (200 pairs):
 
 ## Visual Graphs
 
-### Graph 1 — p95 Latency vs. Load
+### Graph 1 — 2D Curves: p95 Delivery Latency (Y) vs. Concurrency Load (X)
+
+```text
+Latency (ms)
+   ▲
+ ∞ │                                              [Centralized: CLIFF / SATURATED 💀]
+   │                                              [1-Server + Redis: CLIFF / SATURATED 💀]
+50 │
+40 │
+   │                                                       ◆ (2-Server Cluster: 35ms)
+30 │             ▲ (1-Server: 31ms)       ▲ (30ms)
+   │             ◆ (2-Server: 24ms)       ◆ (25ms)
+20 │
+10 │             ● (Centralized: 10ms)    ● (12ms)
+ 0 └─────────────┴────────────────────────┴────────────────┴───────────────────────► Concurrency (Pairs)
+                100 pairs (0.5×B)        140 pairs (0.7×B) 200 pairs (1.0×B - Limit B)
+                (200 sockets)            (280 sockets)     (400 sockets)
+
+Legend:
+  ● Curve 1: Centralized Baseline (10ms → 12ms → 💀 SATURATED at 200p / event loop queue collapse)
+  ▲ Curve 2: 1-Server + Redis (31ms → 30ms → 💀 SATURATED at 200p / Redis serialization tax)
+  ◆ Curve 3: 2-Server Cluster + Redis (24ms → 25ms → 🚀 35ms stable at 200p / 100% message delivery)
+```
+
+```mermaid
+---
+config:
+  theme: dark
+---
+xychart-beta
+    title "p95 Message Delivery Latency (ms) vs. Concurrency"
+    x-axis ["0.5B (100 pairs)", "0.7B (140 pairs)", "1.0B (200 pairs)"]
+    y-axis "p95 Latency (ms)" 0 --> 50
+    line "2-Server Cluster + Redis" [24, 25, 35]
+    line "1-Server + Redis" [31, 30, 50]
+    line "Centralized (No Redis)" [10, 12, 50]
+```
+
+---
+
+### Graph 2 — p95 Latency Breakdown vs. Load
 
 ```
 P95 Latency vs. Load (B = 200 pairs)
@@ -159,7 +199,7 @@ Load + Architecture              │Bar (each █ ≈ 1 unit)                   
 ────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-### Graph 2 — p99 Latency vs. Load
+### Graph 3 — p99 Tail Latency Breakdown vs. Load
 
 ```
 P99 Latency vs. Load (B = 200 pairs)
