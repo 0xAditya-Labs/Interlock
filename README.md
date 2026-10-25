@@ -15,10 +15,27 @@
 ## 📌 Quick Links & Navigation
 
 - 🌐 **Live Demo (Centralized Monolith):** [https://interlock-mv9m.onrender.com](https://interlock-mv9m.onrender.com)
+- 📸 **Application Showcase:** [#application-showcase](#-application-showcase)
 - 📄 **Full Benchmark Report:** [`benchmarking/results/BENCHMARK_REPORT.md`](./benchmarking/results/BENCHMARK_REPORT.md)
 - 🏗️ **Architecture Deep-Dive:** [`docs/DISTRIBUTED_ARCHITECTURE.md`](./docs/DISTRIBUTED_ARCHITECTURE.md)
 - 🧪 **Benchmarking Engine Guide:** [`docs/BENCHMARKING_GUIDE.md`](./docs/BENCHMARKING_GUIDE.md)
 - 📝 **Engineering Notes:** [`IMPLEMENTATION_NOTES.md`](./IMPLEMENTATION_NOTES.md)
+
+---
+
+## 📸 Application Showcase
+
+> A full-featured real-time chat interface built with **React 18**, **TailwindCSS**, and **DaisyUI**, featuring live presence detection, Cloudinary media sharing, and instant theme switching across 32 palettes.
+
+| 💬 Real-Time Chat & Live Presence | 🎨 32 Dynamic DaisyUI Themes |
+|:---:|:---:|
+| ![Chat Window](./public/project_images/chat-window.png) | ![Theme Selection](./public/project_images/Theme-selection.png) |
+| *1-on-1 instant messaging with Socket.io, online/offline status dots, and image sharing* | *Live interactive theme switcher supporting 32 customizable color palettes* |
+
+| 🔐 Secure JWT Authentication | ⚙️ Profile & Media Management |
+|:---:|:---:|
+| ![Login Page](./public/project_images/login-page.png) | ![Account Settings](./public/project_images/Account-settings.png) |
+| *Bcrypt password hashing, token validation, and secure HTTP-only cookies* | *Cloudinary image upload integration for real-time user avatar updates* |
 
 ---
 
