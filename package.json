@@ -1,13 +1,18 @@
 {
   "name": "interlock",
   "version": "1.0.0",
-  "description": "",
+  "description": "Distributed real-time chat app — MERN + Socket.io + Redis",
   "main": "index.js",
   "scripts": {
     "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "npm run start --prefix backend"
+    "start": "npm run start --prefix backend",
+    "start:cluster": "node backend/scripts/start-cluster.js",
+    "benchmark": "node benchmarking/run-benchmark.js",
+    "bench": "node benchmarking/run-benchmark.js",
+    "bench:fast": "node benchmarking/run-benchmark.js --skip-phase-a --B=200 --fast",
+    "bench:report": "node benchmarking/report/regenerate.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["chat", "websocket", "redis", "distributed", "mern"],
+  "author": "Aditya Chauhan",
   "license": "ISC"
 }

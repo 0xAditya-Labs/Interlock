@@ -26,3 +26,10 @@ dist-ssr
 .env
 some_account_*
 non_uploading_docs/
+
+# Redis data file (auto-generated on startup, machine-specific)
+dump.rdb
+
+# Benchmark raw data (machine-specific — only commit the final report MD)
+benchmarking/results/phase-a-raw.json
+benchmarking/results/phase-b-raw.json

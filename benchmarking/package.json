@@ -1,0 +1,15 @@
+{
+  "name": "interlock-benchmark",
+  "version": "1.0.0",
+  "description": "Load testing suite for Interlock distributed WebSocket backend",
+  "type": "module",
+  "scripts": {
+    "bench": "node run-benchmark.js",
+    "bench:quick": "node run-benchmark.js --skip-phase-a --B=100",
+    "bench:phase-a": "node -e \"import('./phases/phase-a-find-B.js').then(m => m.findBreakingLimit()).then(r => console.log('B =', r.B))\"",
+    "install:deps": "npm install socket.io-client"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.8.1"
+  }
+}
