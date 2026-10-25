@@ -1,86 +1,90 @@
-# Interlock - Fullstack Real-Time Chat App
+# Interlock — Fullstack Real-Time Chat App
 
-Interlock is a full-featured real-time chat application built using the MERN stack (MongoDB, Express, React, Node.js) with TailwindCSS and DaisyUI for clean, responsive UI components. It supports real-time messaging, authentication, and a beautiful, intuitive interface.
+> A full-featured real-time chat application built using the MERN stack (MongoDB, Express, React, Node.js) and Socket.io with TailwindCSS and DaisyUI for clean, responsive UI components.
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Render-brightgreen?style=for-the-badge&logo=render)](https://interlock-mv9m.onrender.com/)
+[![Node.js](https://img.shields.io/badge/Node.js-v18%2B-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
+[![Socket.io](https://img.shields.io/badge/Socket.io-v4-010101?style=for-the-badge&logo=socketdotio)](https://socket.io/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb)](https://mongodb.com/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
+
+---
+
+> 🚀 **Looking for the Distributed Architecture & Redis Scale-Out?**  
+> Check out the [`distributed-backend`](https://github.com/0xAditya-Labs/Interlock/tree/distributed-backend) branch for multi-node Redis Pub/Sub clustering, atomic presence tracking, cache-aside history, and the complete performance telemetry report.
 
 ---
 
 ## 🚀 Live Demo
 
-🔗 [https://interlock-mv9m.onrender.com/](https://interlock-mv9m.onrender.com/)
+🔗 **[https://interlock-mv9m.onrender.com/](https://interlock-mv9m.onrender.com/)**
 
 ---
 
 ## 🚀 Features
 
-* 👥 User Authentication (JWT-based login & registration)
-* 💬 Real-Time One-to-One Chat
-* 📡 Socket.io Integration for live message delivery
-* 🌈 Styled using TailwindCSS and DaisyUI
-* 🖼️ Clean and responsive UI
+* 👥 **User Authentication:** JWT-based user login & registration with Bcrypt password hashing.
+* 💬 **Real-Time 1-to-1 Chat:** Instant messaging using Socket.io WebSockets.
+* 🟢 **Online Status:** Real-time online/offline presence indicators.
+* 🖼️ **Media Sharing:** Image uploads and CDN transformations via Cloudinary.
+* 🌈 **Modern Themeable UI:** Clean interface built with TailwindCSS and DaisyUI with 32 selectable themes.
+* ⚡ **Global State:** Lightweight state management with Zustand.
 
 ---
 
 ## 🧠 Tech Stack
 
-### Frontend:
-
-* React
-* TailwindCSS
-* DaisyUI
+### Frontend
+* React 18 & Vite
+* TailwindCSS & DaisyUI
 * Axios
-* Zustand (state management)
+* Zustand
+* Socket.io Client
 
-### Backend:
-
-* Node.js
-* Express.js
-* MongoDB (Mongoose ODM)
-* Socket.io
-* JWT Auth
-* dotenv (for env config)
+### Backend
+* Node.js & Express.js
+* MongoDB & Mongoose ODM
+* Socket.io v4
+* JWT Authentication
+* Cloudinary API
+* dotenv
 
 ---
 
 ## 🛠️ Installation and Setup
 
-### 1. Clone the Repo
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/0xAditya-Labs/My-Chat-App.git
-cd My-Chat-App
+git clone https://github.com/0xAditya-Labs/Interlock.git
+cd Interlock
 ```
 
-### 2. Setup Environment Variables
+### 2. Environment Variables
 
-Create a `.env` file inside `backend/` with the following:
-
+Create `backend/.env`:
 ```env
 PORT=5000
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/
-JWT_SECRET=your_jwt_secret
+MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/interlock
+JWT_SECRET=your_jwt_secret_key_here
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-Create another `.env` file inside `frontend/` with:
-
+Create `frontend/.env`:
 ```env
 VITE_BASE_URL=http://localhost:5000
 ```
 
 ### 3. Install Dependencies & Build
 
-You only need to run:
-
 ```bash
 npm run build
 ```
 
-This single command will:
-
-* Install all dependencies in `backend/`
-* Install all dependencies in `frontend/`
-* Build the frontend app via Vite
-
-✅ No separate `npm install` step is needed because `build` script handles it internally.
+This single command installs all dependencies in both `backend/` and `frontend/`, and builds the frontend production bundle via Vite.
 
 ---
 
@@ -88,95 +92,53 @@ This single command will:
 
 ### Option 1: Run Backend and Frontend Separately
 
-**Backend**
-
+**Backend:**
 ```bash
 npm start
 ```
-  OR
-  
-```bash
-cd backend
-npm run start
-```
+*(Runs on `http://localhost:5000`)*
 
-**Frontend**
-
+**Frontend:**
 ```bash
 cd frontend
 npm run dev
 ```
-
-Now open your browser and go to: [http://localhost:5173](http://localhost:5173)
+*(Runs on `http://localhost:5173`)*
 
 ---
 
-### Option 2: Run Both (Fullstack) in One Command
+### Option 2: Run Both Fullstack in One Command
 
-To run both backend and frontend simultaneously, you can add:
-
-```json
-"start": "concurrently \"npm run start --prefix backend\" \"npm run dev --prefix frontend\""
-```
-
-Install `concurrently` if not already:
-
-```bash
-npm install concurrently --save-dev
-```
-
-Then just run:
-
+Run concurrently from the root directory:
 ```bash
 npm run start
 ```
-
-✅ This will run:
-
-* `backend` on `localhost:5000`
-* `frontend` on `localhost:5173`
-
-All from a **single terminal**.
-
----
-
-## 🌐 Deployment
-
-> Deployed on **Render**: [interlock-mv9m.onrender.com](interlock-mv9m.onrender.com)
 
 ---
 
 ## 📁 Folder Structure
 
 ```
-My-Chat-App/
+Interlock/
 ├── backend/                   # Node.js + Express API
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── config/
-│   ├── middleware/
+│   ├── src/
+│   │   ├── controllers/       # Auth and message controllers
+│   │   ├── models/            # Mongoose schemas (User, Message)
+│   │   ├── routes/            # Express REST routes
+│   │   ├── middleware/        # JWT auth verification
+│   │   └── lib/               # DB, Cloudinary, and Socket.io setup
 │   └── .env                   # Backend environment variables
-├── frontend/                  # React + Vite + Tailwind + DaisyUI
-│   ├── components/
-│   ├── pages/
-│   ├── store/
-│   ├── App.jsx
-│   ├── main.jsx
+│
+├── frontend/                  # React + Vite client
+│   ├── src/
+│   │   ├── components/        # Chat containers, sidebars, headers
+│   │   ├── pages/             # Login, SignUp, Profile, Settings, Home
+│   │   └── store/             # Zustand stores (useAuthStore, useChatStore)
 │   └── .env                   # Frontend environment variables
-├── package.json               # Root scripts to build and run both ends
-├── README.md
+│
+├── package.json               # Root scripts
+└── README.md                  # Project documentation
 ```
-
----
-
-## 💡 Future Enhancements
-
-* Group chats
-* Message notifications
-* User profile editing
-* Message delete/edit support
-* Typing indicator
 
 ---
 
@@ -186,7 +148,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ---
 
-## 🔥 Created with 💻 and ⚡ by Aditya Chauhan
+## 👤 Author
 
-<!-- Changed from Adree1204 to 0xAditya-Labs bcz of change in username of my id from Adree to Aditya one for professional look reasons -->
-
+**Aditya Chauhan**  
+GitHub: [@0xAditya-Labs](https://github.com/0xAditya-Labs)
