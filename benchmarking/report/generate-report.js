@@ -284,7 +284,7 @@ export function generateReport({ B, rampData, phaseB, startTime, endTime }) {
         if (Array.isArray(parsed.rampData) && parsed.rampData.length) {
           rampData = parsed.rampData;
         }
-      } catch {}
+      } catch { }
     }
   }
 
