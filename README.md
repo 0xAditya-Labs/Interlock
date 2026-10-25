@@ -24,7 +24,9 @@
 
 ## 📖 The Story: Why This Project Exists
 
-This project began with my initial implementation of a fullstack real-time chat app using the classic MERN stack (MongoDB, Express, React, Node.js) and Socket.io. It featured a clean UI built with TailwindCSS and DaisyUI, JWT authentication, 1-to-1 live messaging, online status indicators, and image sharing via Cloudinary.
+Almost every web developer builds a real-time chat application at some point. The standard playbook is well known: **MERN Stack (MongoDB, Express, React, Node.js) + Socket.io**. 
+
+This repository started as exactly that — **My-Chat-App (Chatty)**. It had a clean UI built with TailwindCSS and DaisyUI, JWT authentication, 1-to-1 live messaging, online status indicators, and image sharing via Cloudinary. For 5 to 10 friends chatting together, it was smooth, responsive, and delightful.
 
 **Then came the engineering question:**
 > *"What happens when 200 people are chatting at the exact same second? Or 500? When does the server choke, why does it choke, and how do we scientifically prove that a distributed architecture fixes it?"*
@@ -95,47 +97,7 @@ We pitted 3 backend architectures against each other at $0.5\times B$ (100 pairs
 
 ---
 
-### Visual Latency Graphs (2D Curves & Percentiles)
-
-#### 2D Performance Curve: Latency vs. Concurrency
-
-```text
-Latency (ms)
-   ▲
- ∞ │                                              [Centralized: CLIFF / SATURATED 💀]
-   │                                              [1-Server + Redis: CLIFF / SATURATED 💀]
-50 │
-40 │
-   │                                                       ◆ (2-Server Cluster: 35ms)
-30 │             ▲ (1-Server: 31ms)       ▲ (30ms)
-   │             ◆ (2-Server: 24ms)       ◆ (25ms)
-20 │
-10 │             ● (Centralized: 10ms)    ● (12ms)
- 0 └─────────────┴────────────────────────┴────────────────┴───────────────────────► Concurrency (Pairs)
-                100 pairs (0.5×B)        140 pairs (0.7×B) 200 pairs (1.0×B - Limit B)
-                (200 sockets)            (280 sockets)     (400 sockets)
-
-Legend:
-  ● Curve 1: Centralized Baseline (10ms → 12ms → 💀 SATURATED at 200p / event loop queue collapse)
-  ▲ Curve 2: 1-Server + Redis (31ms → 30ms → 💀 SATURATED at 200p / Redis serialization tax)
-  ◆ Curve 3: 2-Server Cluster + Redis (24ms → 25ms → 🚀 35ms stable at 200p / 100% message delivery)
-```
-
-```mermaid
----
-config:
-  theme: dark
----
-xychart-beta
-    title "p95 Message Delivery Latency (ms) vs. Concurrency Load"
-    x-axis ["0.5B (100 pairs)", "0.7B (140 pairs)", "1.0B (200 pairs)"]
-    y-axis "p95 Latency (ms)" 0 --> 50
-    line "2-Server Cluster + Redis" [24, 25, 35]
-    line "1-Server + Redis" [31, 30, 50]
-    line "Centralized Baseline" [10, 12, 50]
-```
-
-#### P95 Breakdown Graph
+### Visual Latency Graphs (p95 & p99)
 
 ```
 P95 Latency vs. Load (Breaking Point B = 200 pairs / 400 sockets)
@@ -417,3 +379,11 @@ Interlock/
 ## 🤝 Contributing
 
 Contributions are welcome! Please open an issue to discuss proposed enhancements before submitting a pull request. For architectural questions, refer to [`docs/DISTRIBUTED_ARCHITECTURE.md`](./docs/DISTRIBUTED_ARCHITECTURE.md).
+
+---
+
+## 👤 Author
+
+**Aditya Chauhan**  
+GitHub: [@0xAditya-Labs](https://github.com/0xAditya-Labs)  
+*Crafted with 💻, ⚡, and rigorous engineering.*
